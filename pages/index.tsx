@@ -4,13 +4,10 @@ import { WithLayout } from '../components';
 
 import {
   Transfer,
-  Earn,
-  Vote,
-  LendOverview,
-  LendToken,
   Settings,
-  Stream,
   Swap,
+  Mint,
+  Burn,
   Dashboard,
 } from '../_pages';
 
@@ -21,13 +18,10 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route path="/transfer" component={Transfer} />
-          <Route path="/earn" component={Earn} />
-          <Route path="/vote" component={Vote} />
-          <Route exact path="/lend" component={LendOverview} />
-          <Route path="/lend/:token" component={LendToken} />
           <Route path="/settings" component={Settings} />
-          <Route path="/stream" component={Stream} />
           <Route path="/swap" component={Swap} />
+          <Route path="/mint" component={Mint} />
+          <Route path="/burn" component={Burn} />
         </Switch>
       </WithLayout>
     </Router>

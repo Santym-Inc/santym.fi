@@ -107,68 +107,7 @@ const tabs: SidebarOption[] = [
     link: '/transfer',
   },
   {
-    name: 'Exchange',
-    icon: (
-      <svg
-        className="h-4"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M13 10V3L4 14h7v7l9-11h-7z"
-        />
-      </svg>
-    ),
-    link: '/swap',
-  },
-  {
-    name: 'Lend',
-    icon: (
-      <svg
-        className="h-4"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
-        />
-      </svg>
-    ),
-    link: '/lend',
-    badge: 'BETA',
-  },
-  {
-    name: 'Staking',
-    icon: (
-      <svg
-        className="h-4"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-        />
-      </svg>
-    ),
-    link: '/earn',
-  },
-  {
-    name: 'Governance',
+    name: 'Swap',
     icon: (
       <svg
         className="h-4"
@@ -185,10 +124,10 @@ const tabs: SidebarOption[] = [
         />
       </svg>
     ),
-    link: '/vote',
+    link: '/swap',
   },
   {
-    name: 'Stream',
+    name: 'Mint',
     icon: (
       <svg
         className="h-4"
@@ -201,18 +140,31 @@ const tabs: SidebarOption[] = [
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
-          d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"
+          d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
         />
+      </svg>
+    ),
+    link: '/mint',
+  },
+  {
+    name: 'Burn',
+    icon: (
+      <svg
+        className="h-4"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
-          d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"
+          d="M13 10V3L4 14h7v7l9-11h-7z"
         />
       </svg>
     ),
-    link: '/stream',
-    badge: 'BETA',
+    link: '/burn',
   },
   {
     name: 'Settings',
@@ -471,12 +423,12 @@ export function WithAppLayout({ children }) {
           <div className="mt-8 md:mt-0">
             <div className="flex items-center">
               <Image src="/logo.png" height="24px" width="24px" />
-              <p className="text-center text-base font-medium ml-2">Plock</p>
+              <p className="text-center text-base font-medium ml-2">Santym</p>
             </div>
           </div>
           <div className="flex items-center space-x-6">
             <a
-              href="https://github.com/alexbharley/plock.fi"
+              href="https://github.com/Santym-Inc/santym.fi"
               target="_blank"
               className="text-gray-600 dark:text-gray-400 hover:text-gray-500"
             >
@@ -495,7 +447,7 @@ export function WithAppLayout({ children }) {
               </svg>
             </a>
             <a
-              href="https://twitter.com/alex_b_h_"
+              href="https://twitter.com/TwittSantym"
               target="_blank"
               className="text-gray-600 dark:text-gray-400 hover:text-gray-500"
             >
@@ -538,9 +490,9 @@ function WithSidebar({ children }: any) {
 
 export const WithLayout = ({ children }: any) => (
   <ContractKitProvider
-    dappName="Plock"
+    dappName="Santym"
     dappDescription="The DeFi dashboard for Celo"
-    dappUrl="https://plock.fi"
+    dappUrl="https://santym.fi"
     networks={[Mainnet, Alfajores, Baklava]}
   >
     <Base.Provider>

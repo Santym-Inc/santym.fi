@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Plock</title>
+        <title>Santym</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="keywords" content="celo, cryptocurrency, defi" />
         <meta
@@ -22,8 +22,8 @@ function MyApp({ Component, pageProps }: AppProps) {
             <script
               async
               defer
-              data-domain="app.plock.fi"
-              src="https://stats.app.plock.fi/js/index.js"
+              data-domain="app.santym.fi"
+              src="https://stats.app.santym.fi/js/index.js"
             />
             <script
               dangerouslySetInnerHTML={{

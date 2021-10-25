@@ -3,7 +3,7 @@
     return;
   }
 
-  const settingsKey = 'plock/settings';
+  const settingsKey = 'santym/settings';
   const settings = JSON.parse(localStorage.getItem(settingsKey) || '{}');
   if (settings.darkMode === true) {
     document.documentElement.classList.add('dark');

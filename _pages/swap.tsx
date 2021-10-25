@@ -112,7 +112,7 @@ export function Swap() {
             Swap
           </h3>
           <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm">
-            Plock uses{' '}
+            Santym uses{' '}
             <a
               className="text-blue-500"
               target="_blank"
@@ -191,8 +191,6 @@ export function Swap() {
           )}
         </button>
       </PanelWithButton>
-
-      <Balances />
     </>
   );
 }

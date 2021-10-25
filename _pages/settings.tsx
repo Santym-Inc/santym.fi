@@ -111,26 +111,6 @@ export function Settings() {
                 />
               </div>
             </div>
-
-            <div>
-              <label
-                htmlFor="metadataURL"
-                className="block text-sm font-medium "
-              >
-                Metadata URL
-              </label>
-              <div className="mt-1">
-                <Input
-                  id="metadataURL"
-                  name="metadataURL"
-                  placeholder="https://example.com/metadata.json"
-                  value={state.metadataURL}
-                  onChange={(e) =>
-                    changeProperty('metadataURL', e.target.value)
-                  }
-                />
-              </div>
-            </div>
           </div>
         </PanelGrid>
 
@@ -169,62 +149,6 @@ export function Settings() {
                 readOnly
               />
             </div>
-
-            <div className="space-y-1">
-              <label htmlFor="name" className="block text-sm font-medium ">
-                Wallet address
-              </label>
-              <AddressInput
-                placeholder="No wallet address set"
-                value={accountSummary.wallet}
-                copyable
-                scanToCopy
-                disabled
-                readOnly
-              />
-            </div>
-
-            <div className="space-y-1">
-              <label htmlFor="name" className="block text-sm font-medium ">
-                Vote signer
-              </label>
-              <AddressInput
-                placeholder="No vote signing set"
-                value={accountSummary.authorizedSigners.vote}
-                copyable
-                scanToCopy
-                disabled
-                readOnly
-              />
-            </div>
-
-            <div className="space-y-1">
-              <label htmlFor="name" className="block text-sm font-medium ">
-                Attestation signer
-              </label>
-              <AddressInput
-                placeholder="No attestation signing set"
-                value={accountSummary.authorizedSigners.attestation}
-                copyable
-                scanToCopy
-                disabled
-                readOnly
-              />
-            </div>
-
-            <div className="space-y-1">
-              <label htmlFor="name" className="block text-sm font-medium ">
-                Validator signer
-              </label>
-              <AddressInput
-                placeholder="No attestation signing set"
-                value={accountSummary.authorizedSigners.validator}
-                copyable
-                scanToCopy
-                disabled
-                readOnly
-              />
-            </div>
           </div>
         </PanelGrid>
       </Panel>
@@ -232,9 +156,9 @@ export function Settings() {
       <Panel>
         <PanelGrid>
           <div>
-            <PanelHeader>Plock</PanelHeader>
+            <PanelHeader>Santym</PanelHeader>
             <PanelDescription>
-              Change behaviour of Plock to suit your usage better.
+              Change behaviour of Santym to suit your usage better.
             </PanelDescription>
           </div>
           <div className="space-y-6">

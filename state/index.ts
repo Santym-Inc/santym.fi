@@ -62,7 +62,7 @@ const defaultSettings = {
   currency: FiatCurrency.USD,
   darkMode: false,
 };
-const LOCALSTORAGE_KEY = 'plock/settings';
+const LOCALSTORAGE_KEY = 'santym/settings';
 let localSettings = {};
 if (typeof localStorage !== 'undefined') {
   localSettings = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY) || '{}');
@@ -224,7 +224,7 @@ function State() {
   );
 
   const toggleDarkMode = useCallback(() => {
-    track('plock/change-theme');
+    track('santym/change-theme');
     if (settings.darkMode) {
       document.querySelector('html').classList.remove('dark');
       updateSetting('darkMode', false);
@@ -236,7 +236,7 @@ function State() {
 
   const updateDefaultFiatCurrency = useCallback(
     (c: FiatCurrency) => {
-      track('plock/change-currency');
+      track('santym/change-currency');
       updateSetting('currency', c);
     },
     [updateSetting]
