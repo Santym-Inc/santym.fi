@@ -89,7 +89,7 @@ export function Mint() {
     loadTransfers({ variables: { address: kit.defaultAccount } });
   }, [loadTransfers, kit.defaultAccount]);
 
-  const transfers =
+  const mints =
     kit.defaultAccount && data
       ? data.celoTransfers.edges
           .map(({ node }) => node)
@@ -143,11 +143,11 @@ export function Mint() {
 
       <Panel>
         <div className="flex flex-col md:flex-row md:items-center">
-          <h3 className=" whitespace-nowrap mb-3 md:mb-0">Past transfers</h3>
+          <h3 className=" whitespace-nowrap mb-3 md:mb-0">Past mints</h3>
 
           <div className="flex items-center justify-between space-x-8 md:ml-auto">
             <div className="flex items-center space-x-3">
-              <div className="text-xs ">Show tiny transfers</div>
+              <div className="text-xs ">Show tiny mints</div>
               <Toggle
                 active={showTiny}
                 onChange={(value) => setShowTiny(value)}
@@ -170,10 +170,10 @@ export function Mint() {
             loading={loading}
             noDataMessage={
               kit.defaultAccount
-                ? 'No transfers found'
-                : 'Need to connect an account before viewing transfers'
+                ? 'No mints found'
+                : 'Need to connect an account before viewing mints'
             }
-            rows={transfers.map((node) => {
+            rows={mints.map((node) => {
               const toMe = node.toAddressHash === kit.defaultAccount;
               const displayAddress = toMe
                 ? node.fromAddressHash
