@@ -1,13 +1,11 @@
 import { NetworkNames } from '@celo-tools/use-contractkit';
 
 export enum TokenTicker {
-  CELO = 'CELO',
-  cUSD = 'cUSD',
-  cEUR = 'cEUR',
   cETB = 'cETB',
   cKSH = 'cKSH',
-  vMOJO = 'vMOJO',
-  PesabaseDollar = 'pUSD',
+  cUSD = 'cUSD',
+  cEUR = 'cEUR',
+  CELO = 'CELO',
 }
 
 export interface Token {
@@ -48,19 +46,11 @@ export const cEUR: Token = {
   },
 };
 
-export const PesabaseDollar: Token = {
-  ticker: TokenTicker.PesabaseDollar,
-  name: 'Pesabase Dollar',
-  networks: {
-    [NetworkNames.Mainnet]: '0x041954f3f34422af8d1f11fd743f3a1b70c30271',
-  },
-};
-
 export const cETB: Token = {
   ticker: TokenTicker.cETB,
   name: 'Ethiopian Birr',
   networks: {
-    [NetworkNames.Mainnet]: '0x041954f3f34422af8d1f11fd743f3a1b70c30271',
+    [NetworkNames.Alfajores]: '0x6d844918a5E91c1F700659Bb6b602c80A4B161C3',
   },
 };
 
@@ -68,18 +58,17 @@ export const cKSH: Token = {
   ticker: TokenTicker.cKSH,
   name: 'Kenyan Shilling',
   networks: {
-    [NetworkNames.Mainnet]: '0x041954f3f34422af8d1f11fd743f3a1b70c30271',
+    [NetworkNames.Alfajores]: '0x489A48589e3D0710DD2aE6f3F5886146C6e6ae4F',
   },
 };
 
 
 export const tokens: Token[] = [
-  Celo,
-  cUSD,
-  cEUR,
   cETB,
   cKSH,
-  PesabaseDollar,
+  cUSD,
+  cEUR,
+  Celo,
 ];
 
 export enum FiatCurrency {
