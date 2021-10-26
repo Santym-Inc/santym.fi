@@ -58,7 +58,7 @@ export const cKSH: Token = {
   ticker: TokenTicker.cKSH,
   name: 'Kenyan Shilling',
   networks: {
-    [NetworkNames.Alfajores]: '0x489A48589e3D0710DD2aE6f3F5886146C6e6ae4F',
+    [NetworkNames.Alfajores]: '0xd45c0D7a132bf709d90fa53AABE39692605D4ac5',
   },
 };
 
