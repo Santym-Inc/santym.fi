@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 import Loader from 'react-loader-spinner';
 import { Base } from '../state';
 import Web3 from 'web3';
-import { Celo, cUSD, Token, tokens, TokenTicker } from '../constants';
+import { cETB, cKSH, Token, tokens, TokenTicker } from '../constants';
 import { quote, swap } from '../utils/uniswap';
 
 enum States {
@@ -27,9 +27,9 @@ export function Swap() {
   const { network, kit, performActions, address } = useContractKit();
   const { fetchBalances, balances, track } = Base.useContainer();
   const [state, setState] = useState(States.None);
-  const [fromToken, setFromToken] = useState(Celo);
+  const [fromToken, setFromToken] = useState(cKSH);
   const [amounts, setAmounts] = useState({ from: '', to: '' });
-  const [toToken, setToToken] = useState(cUSD);
+  const [toToken, setToToken] = useState(cETB);
   const [exchangeRateCache, setExchangeRateCache] = useState({});
   const [quoteError, setQuoteError] = useState('');
 
@@ -203,7 +203,7 @@ export function Swap() {
         </div>
 
         <button
-          onClick={handleSwap2}
+          onClick={handleSwap}
           disabled={state === States.Swapping}
           className="ml-auto primary-button"
         >
