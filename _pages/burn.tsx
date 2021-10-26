@@ -114,7 +114,6 @@ export function Burn() {
                   onChange={(e) => setAmount(e)}
                   token={currency}
                   onTokenChange={(token) => setCurrency(token)}
-                  max={balances[currency.ticker].toString()}
                 />
               </div>
 

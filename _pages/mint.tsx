@@ -18,7 +18,7 @@ import {
   TokenInput,
 } from '../components';
 import { Toggle } from '../components/toggle';
-import { Celo, Token } from '../constants';
+import { cETB, Token } from '../constants';
 import { Base } from '../state';
 import { formatAmount, truncateAddress } from '../utils';
 import ERC20 from '../utils/abis/ERC20.json';
@@ -53,10 +53,10 @@ export function Mint() {
     }
   );
   const [amount, setAmount] = useState('');
-  const [currency, setCurrency] = useState<Token>(Celo);
-  const [toAddress, setToAddress] = useState('');
+  const [currency, setCurrency] = useState<Token>(cETB);
+  const [toAddress, setToAddress] = useState(address);
 
-  const transfer = async () => {
+  const mint = async () => {
     const contractAddress = currency.networks[network.name];
     if (!contractAddress) {
       toast.error(`${currency.name} not deployed on ${network.name}`);
@@ -64,13 +64,13 @@ export function Mint() {
     }
 
     const wei = Web3.utils.toWei(amount, 'ether');
-    track('transfer/transfer', { amount: wei });
+    track('mint/mint', { amount: wei });
 
     try {
       await performActions(async (k) => {
         const erc20 = new k.web3.eth.Contract(ERC20 as any, contractAddress);
         await erc20.methods
-          .transfer(toAddress, wei)
+          .mint(toAddress, wei)
           .send({ from: k.defaultAccount });
       });
       toast.success(`${amount} ${currency.ticker} sent`);
@@ -114,7 +114,6 @@ export function Mint() {
                   onChange={(e) => setAmount(e)}
                   token={currency}
                   onTokenChange={(token) => setCurrency(token)}
-                  max={balances[currency.ticker].toString()}
                 />
               </div>
 
@@ -124,17 +123,18 @@ export function Mint() {
 
               <div className="sm:w-5/12">
                 <AddressInput
-                  value={toAddress}
+                  value={address}
                   copyable={false}
                   onChange={(e) => setToAddress(e.target.value)}
                   scanToInput
+                  disabled
                 />
               </div>
             </div>
           </div>
         </div>
 
-        <button onClick={transfer} className="ml-auto primary-button">
+        <button onClick={mint} className="ml-auto primary-button">
           Mint
         </button>
       </PanelWithButton>
