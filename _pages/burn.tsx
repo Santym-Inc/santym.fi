@@ -18,7 +18,7 @@ import {
   TokenInput,
 } from '../components';
 import { Toggle } from '../components/toggle';
-import { Celo, Token } from '../constants';
+import { cETB, Token } from '../constants';
 import { Base } from '../state';
 import { formatAmount, truncateAddress } from '../utils';
 import ERC20 from '../utils/abis/ERC20.json';
@@ -53,7 +53,7 @@ export function Burn() {
     }
   );
   const [amount, setAmount] = useState('');
-  const [currency, setCurrency] = useState<Token>(Celo);
+  const [currency, setCurrency] = useState<Token>(cETB);
   const [toAddress, setToAddress] = useState('');
 
   const transfer = async () => {
