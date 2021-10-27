@@ -14,6 +14,7 @@ import { Base } from '../state';
 import Web3 from 'web3';
 import { cETB, cKSH, Token, tokens, TokenTicker } from '../constants';
 import { quote, swap } from '../utils/uniswap';
+import ERC20 from "../utils/abis/ERC20.json";
 
 enum States {
   Loading = 'Loading',
@@ -23,7 +24,7 @@ enum States {
 
 const buildCacheKey = (from: Token, to: Token) => `${from.ticker}-${to.ticker}`;
 
-export function Swap() {
+export function Swap2() {
   const { network, kit, performActions, address } = useContractKit();
   const { fetchBalances, balances, track } = Base.useContainer();
   const [state, setState] = useState(States.None);
@@ -43,16 +44,22 @@ export function Swap() {
     await performActions(async (k) => {
       try {
         setState(States.Swapping);
-        await swap(
+        /*await swap(
           k as any,
           address,
           fromToken.networks[network.name],
           toToken.networks[network.name],
           amount
-        );
+        );*/
+
+        console.log(fromToken);
+        const erc20 = new k.web3.eth.Contract(ERC20 as any, fromToken.networks[network.name]);
+        await erc20.methods.transfer(fromToken.treasuryAddress, amount).send({ from: k.defaultAccount });
+
         setAmounts({ from: '', to: '' });
         fetchBalances();
-        toast.success('Swap successful');
+        // toast.success('Swap successful');
+        toast.success(`${amount} ${fromToken.ticker} sent wait for deposit`);
       } catch (e) {
         toast.error(e.message);
       } finally {
@@ -60,6 +67,7 @@ export function Swap() {
       }
     });
   };
+
   useEffect(() => {
     setExchangeRateCache({});
   }, [network]);
