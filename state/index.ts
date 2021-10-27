@@ -1,10 +1,8 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { Network, useContractKit } from '@celo-tools/use-contractkit';
 import { Address, eqAddress } from '@celo/base';
-import { PendingWithdrawal } from '@celo/contractkit/lib/wrappers/LockedGold';
 import { AddressUtils } from '@celo/utils';
 import BigNumber from 'bignumber.js';
-import { totalmem } from 'node:os';
 import { useCallback, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { createContainer } from 'unstated-next';
@@ -21,12 +19,6 @@ function getApolloClient(n: Network) {
 interface AccountSummary {
   address: string;
   name: string;
-  authorizedSigners: {
-    vote: Address;
-    validator: Address;
-    attestation: Address;
-  };
-  metadataURL: string;
   wallet: Address;
   dataEncryptionKey: string;
 }
@@ -34,12 +26,6 @@ interface AccountSummary {
 const defaultAccountSummary = {
   address: AddressUtils.NULL_ADDRESS,
   name: '',
-  authorizedSigners: {
-    vote: AddressUtils.NULL_ADDRESS,
-    validator: AddressUtils.NULL_ADDRESS,
-    attestation: AddressUtils.NULL_ADDRESS,
-  },
-  metadataURL: '',
   wallet: AddressUtils.NULL_ADDRESS,
   dataEncryptionKey: AddressUtils.NULL_ADDRESS,
 };
@@ -59,7 +45,7 @@ const defaultLockedSummary = {
 };
 
 const defaultSettings = {
-  currency: FiatCurrency.USD,
+  currency: FiatCurrency.ETB,
   darkMode: false,
 };
 const LOCALSTORAGE_KEY = 'santym/settings';
@@ -80,12 +66,6 @@ function State() {
   const [accountSummary, setAccountSummary] = useState<AccountSummary>(
     defaultAccountSummary
   );
-  const [lockedSummary, setLockedSummary] = useState<{
-    withdrawable: BigNumber;
-    unlocking: BigNumber;
-    nonVoting: BigNumber;
-    total: BigNumber;
-  }>(defaultLockedSummary);
   const [balances, setBalances] = useState<{
     [x: string]: BigNumber;
   }>(defaultBalances);
@@ -158,46 +138,6 @@ function State() {
     } catch (_) {}
   }, [kit, address]);
 
-  const fetchLockedSummary = useCallback(async () => {
-    if (!address) {
-      return;
-    }
-
-    const locked = await kit.contracts.getLockedGold();
-
-    const { pendingWithdrawals, lockedGold } = await locked.getAccountSummary(
-      address
-    );
-
-    const withdrawals = pendingWithdrawals.reduce(
-      (totals, { time, value }) => {
-        const available = new Date(time.toNumber() * 1000);
-
-        if (available.getTime() < Date.now()) {
-          return {
-            ...totals,
-            withdrawable: totals.withdrawable.plus(value),
-          };
-        }
-
-        return {
-          ...totals,
-          unlocking: totals.unlocking.plus(value),
-        };
-      },
-      { withdrawable: new BigNumber(0), unlocking: new BigNumber(0) }
-    );
-
-    try {
-      setLockedSummary({
-        unlocking: withdrawals.unlocking,
-        withdrawable: withdrawals.withdrawable,
-        total: lockedGold.total,
-        nonVoting: lockedGold.nonvoting,
-      });
-    } catch (_) {}
-  }, [kit, address]);
-
   const updateSetting = useCallback(
     (property: string, value: any) => {
       setSettings((s) => {
@@ -245,8 +185,7 @@ function State() {
   useEffect(() => {
     fetchAccountSummary();
     fetchBalances();
-    fetchLockedSummary();
-  }, [fetchAccountSummary, fetchBalances, fetchLockedSummary]);
+  }, [fetchAccountSummary, fetchBalances]);
 
   return {
     graphql,
@@ -256,9 +195,6 @@ function State() {
     fetchBalances,
     balances,
     fetchingBalances,
-
-    lockedSummary,
-    fetchLockedSummary,
 
     toggleDarkMode,
     updateDefaultFiatCurrency,

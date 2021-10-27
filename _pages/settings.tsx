@@ -29,7 +29,6 @@ export function Settings() {
 
   const [state, setState] = useState({
     name: '',
-    metadataURL: '',
   });
   const [saving, setSaving] = useState(false);
 
@@ -39,14 +38,10 @@ export function Settings() {
 
   useEffect(() => {
     changeProperty('name', accountSummary.name);
-    changeProperty('metadataURL', accountSummary.metadataURL);
   }, [accountSummary]);
 
   async function save() {
-    if (
-      accountSummary.name === state.name &&
-      accountSummary.metadataURL === state.metadataURL
-    ) {
+    if (accountSummary.name === state.name) {
       return;
     }
 
@@ -62,11 +57,6 @@ export function Settings() {
           if (accountSummary.name !== state.name) {
             await accounts
               .setName(state.name)
-              .sendAndWaitForReceipt({ from: k.defaultAccount });
-          }
-          if (accountSummary.metadataURL !== state.metadataURL) {
-            await accounts
-              .setMetadataURL(state.metadataURL)
               .sendAndWaitForReceipt({ from: k.defaultAccount });
           }
 
