@@ -21,7 +21,7 @@ export default function App() {
           <Route path="/transfer" component={Transfer} />
           <Route path="/settings" component={Settings} />
           <Route path="/swap" component={Swap} />
-          <Route path="/swa9" component={Swap2} />
+          <Route path="/swap2" component={Swap2} />
           <Route path="/mint" component={Mint} />
           <Route path="/burn" component={Burn} />
         </Switch>
