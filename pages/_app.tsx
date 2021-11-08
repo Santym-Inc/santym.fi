@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="keywords" content="celo, cryptocurrency, defi" />
         <meta
           name="description"
-          content="Access to a stablecoin exchange on Celo"
+          content="A stablecoin exchange for African Currencies on Celo"
         />
 
         <script async src="/dark-mode.js" />
