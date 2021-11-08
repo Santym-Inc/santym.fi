@@ -1,3 +1,3 @@
 # Santym
 
-A gateway to decentralised applications on Celo.
+A Stablecoin exchange for African Currencies on Celo

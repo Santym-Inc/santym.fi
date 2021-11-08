@@ -1,4 +1,3 @@
-
 import { gql, useLazyQuery } from '@apollo/client';
 import { useContractKit } from '@celo-tools/use-contractkit';
 import { useEffect, useState } from 'react';
