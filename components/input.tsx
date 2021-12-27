@@ -18,7 +18,7 @@ export function Input(props: InputHTMLAttributes<HTMLInputElement>) {
   return (
     <input
       {...clean}
-      className={`w-full appearance-none block px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-indigo-500 sm:text-sm dark:bg-gray-600 w-64 ${className}`}
+      className={`w-full appearance-none block px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-indigo-500 sm:text-sm dark:bg-gray-600 ${className}`}
     />
   );
 }
@@ -53,7 +53,7 @@ export function AddressInput(
       {qrScanModal && (
         <Modal onDismiss={() => setQrScanModal(false)}>
           <QRCode
-            className="w-48 w-48 md:h-96 md:w-96"
+            className="w-48 md:h-96 md:w-96"
             style={{ height: undefined, width: undefined }}
             value={props.value as string}
           />
@@ -62,7 +62,7 @@ export function AddressInput(
 
       {qrInputModal && (
         <Modal onDismiss={() => setQrInputModal(false)}>
-          <div className="w-48 w-48 md:h-96 md:w-96">
+          <div className="w-48 md:h-96 md:w-96">
             <QrReader delay={300} onError={handleError} onScan={handleScan} />
           </div>
         </Modal>

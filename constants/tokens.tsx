@@ -25,7 +25,7 @@ export const Celo: Token = {
     [NetworkNames.Mainnet]: '0x471EcE3750Da237f93B8E339c536989b8978a438',
     [NetworkNames.Baklava]: '0xdDc9bE57f553fe75752D61606B94CBD7e0264eF8',
   },
-  treasuryAddress:'0xC51D8479bA67beB6D383A46CF9331Fec6E835d16',
+  treasuryAddress: '0xC51D8479bA67beB6D383A46CF9331Fec6E835d16',
 };
 
 export const cUSD: Token = {
@@ -36,7 +36,7 @@ export const cUSD: Token = {
     [NetworkNames.Mainnet]: '0x765DE816845861e75A25fCA122bb6898B8B1282a',
     [NetworkNames.Baklava]: '0x62492A644A588FD904270BeD06ad52B9abfEA1aE',
   },
-  treasuryAddress:'0xC51D8479bA67beB6D383A46CF9331Fec6E835d16',
+  treasuryAddress: '0xC51D8479bA67beB6D383A46CF9331Fec6E835d16',
 };
 
 export const cEUR: Token = {
@@ -47,7 +47,7 @@ export const cEUR: Token = {
     [NetworkNames.Mainnet]: '0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73',
     [NetworkNames.Baklava]: '0xf9ecE301247aD2CE21894941830A2470f4E774ca',
   },
-  treasuryAddress:'0xC51D8479bA67beB6D383A46CF9331Fec6E835d16',
+  treasuryAddress: '0xC51D8479bA67beB6D383A46CF9331Fec6E835d16',
 };
 
 export const cETB: Token = {
@@ -56,8 +56,7 @@ export const cETB: Token = {
   networks: {
     [NetworkNames.Alfajores]: '0x6d844918a5E91c1F700659Bb6b602c80A4B161C3',
   },
-  treasuryAddress:'0xC51D8479bA67beB6D383A46CF9331Fec6E835d16',
-
+  treasuryAddress: '0xC51D8479bA67beB6D383A46CF9331Fec6E835d16',
 };
 
 export const cKSH: Token = {
@@ -66,21 +65,14 @@ export const cKSH: Token = {
   networks: {
     [NetworkNames.Alfajores]: '0xd45c0D7a132bf709d90fa53AABE39692605D4ac5',
   },
-  treasuryAddress:'0xC51D8479bA67beB6D383A46CF9331Fec6E835d16',
+  treasuryAddress: '0xC51D8479bA67beB6D383A46CF9331Fec6E835d16',
 };
 
-
-export const tokens: Token[] = [
-  cETB,
-  cKSH,
-  cUSD,
-  cEUR,
-  Celo,
-];
+export const tokens: Token[] = [cETB, cKSH, cUSD, cEUR, Celo];
 
 export enum FiatCurrency {
   USD = 'USD',
   EUR = 'EUR',
   ETB = 'ETB',
-  KSH = 'KSH'
+  KSH = 'KSH',
 }
