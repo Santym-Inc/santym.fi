@@ -10,7 +10,7 @@ import {
   Burn,
   Dashboard,
 } from '../_pages';
-import {Swap2} from "../_pages/swap2";
+import { Swap2 } from "../_pages/swap2";
 
 export default function App() {
   return (
